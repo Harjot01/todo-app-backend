@@ -12,9 +12,11 @@ config({
   path: "./data/config.env",
 });
 
-
 connectDB();
 
+// adding middlewares
+app.use(express.json());
+app.use(cookieParser());
 // CORS
 app.use(
   cors({
@@ -26,9 +28,6 @@ app.use(
 
 app.options("*", cors());
 
-// adding middlewares
-app.use(express.json());
-app.use(cookieParser());
 // adding routers
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/tasks/", tasksRouter);
