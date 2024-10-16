@@ -17,6 +17,7 @@ connectDB();
 // adding middlewares
 app.use(express.json());
 app.use(cookieParser());
+
 // CORS
 app.use(
   cors({
@@ -26,7 +27,6 @@ app.use(
   })
 );
 
-app.options("*", cors());
 
 // adding routers
 app.use("/api/v1/users", userRouter);
