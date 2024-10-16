@@ -3,9 +3,9 @@ import { Tasks } from "../models/tasks.js";
 
 export const createTask = async (req, res, next) => {
   try {
-    const { title, description } = req.body;
+    const { title } = req.body;
 
-    await Tasks.create({ title, description, user: req.user });
+    await Tasks.create({ title, user: req.user });
     res.status(201).json({
       success: true,
       message: "Task Added Successfully",
