@@ -14,6 +14,15 @@ config({
 
 connectDB();
 
+// CORS
+app.use(
+  cors({
+    origin: [process.env.FRONTEND_URL],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 // adding middlewares
 app.use(express.json());
 app.use(cookieParser());
@@ -27,13 +36,7 @@ app.get("/", (req, res) => {
 
 // Using Error Middlware
 app.use(errorMiddleware);
-app.use(
-  cors({
-    origin: [process.env.FRONTEND_URL],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+
 app.listen(process.env.PORT, () => {
   console.log("Server is Working");
 });
