@@ -12,6 +12,7 @@ config({
   path: "./data/config.env",
 });
 
+
 connectDB();
 
 // CORS
@@ -22,6 +23,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.options("*", cors());
 
 // adding middlewares
 app.use(express.json());
