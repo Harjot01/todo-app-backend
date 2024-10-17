@@ -56,9 +56,10 @@ export const getMyProfile = (req, res) => {
 export const Logout = (req, res) => {
   res
     .status(200)
-    .clearCookie("token", {
+    .cookie("token", "", {
       expires: new Date(Date.now()),
       httpOnly: true,
+      path: "/",
       sameSite: process.env.NODE_ENV === "Development" ? "lax" : "none",
       secure: process.env.NODE_ENV === "Development" ? false : true,
     })
